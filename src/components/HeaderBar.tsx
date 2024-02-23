@@ -1,20 +1,31 @@
-import {Image, StyleSheet, Text, View} from 'react-native';
+import {Image, StyleSheet, TouchableOpacity, View} from 'react-native';
 import React from 'react';
-import {SPACING} from '../theme/theme';
 import {logo} from '../assets/images';
-import CustomIcon from './CustomIcon';
-import Icon from 'react-native-vector-icons/FontAwesome6';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import {BORDERRADIUS, COLORS, SPACING} from '../theme/theme';
 
 const HeaderBar = () => {
   return (
     <View style={styles.container}>
       <View>
-        <Image source={logo} style={styles.image} />
+        <Image source={logo} />
       </View>
-      <View>
-        <Icon name="crown" size={30} />
-        <CustomIcon name="crown" size={24} />
-        <Text>TExt</Text>
+
+      <View style={styles.iconWrapper}>
+        <TouchableOpacity style={styles.crownIconView}>
+          <Icon
+            name="crown-outline"
+            size={SPACING.space_30}
+            color={'#272D36'}
+          />
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.crownIconView}>
+          <Icon
+            name="share-variant-outline"
+            size={SPACING.space_30}
+            color={'#272D36'}
+          />
+        </TouchableOpacity>
       </View>
     </View>
   );
@@ -25,13 +36,23 @@ export default HeaderBar;
 const styles = StyleSheet.create({
   container: {
     width: '100%',
-    padding: SPACING.space_30,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
+    paddingVertical: SPACING.space_8,
   },
-  image: {
-    // height: SPACING.space_36,
-    // width: SPACING.space_36,
+  iconWrapper: {
+    display: 'flex',
+    flexDirection: 'row',
+    gap: SPACING.space_12,
+  },
+  crownIconView: {
+    backgroundColor: COLORS.primaryGreyHex,
+    borderRadius: BORDERRADIUS.radius_100,
+    height: 44,
+    width: 44,
+    alignItems: 'center',
+    justifyContent: 'center',
+    overflow: 'hidden',
   },
 });

@@ -4,6 +4,7 @@ interface Spacing {
   space_8: number;
   space_10: number;
   space_12: number;
+  space_14: number;
   space_15: number;
   space_16: number;
   space_18: number;
@@ -51,6 +52,7 @@ interface FontSize {
   size_18: number;
   size_20: number;
   size_24: number;
+  size_26: number;
   size_28: number;
   size_30: number;
 }
@@ -62,4 +64,5 @@ interface BorderRadius {
   radius_15: number;
   radius_20: number;
   radius_25: number;
+  radius_100: number;
 }

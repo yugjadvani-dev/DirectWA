@@ -4,6 +4,7 @@ export const SPACING: Spacing = {
   space_8: 8,
   space_10: 10,
   space_12: 12,
+  space_14: 14,
   space_15: 15,
   space_16: 16,
   space_18: 18,
@@ -21,8 +22,8 @@ export const COLORS: Color = {
   primaryBlackHex: '#0C0F14',
   primaryDarkGreyHex: '#141921',
   secondaryDarkGreyHex: '#21262E',
-  primaryGreyHex: '#252A32',
-  secondaryGreyHex: '#252A32',
+  primaryGreyHex: '#e5e7eb',
+  secondaryGreyHex: '#272D33',
   primaryLightGreyHex: '#52555A',
   secondaryLightGreyHex: '#AEAEAE',
   primaryWhiteHex: '#FFFFFF',
@@ -51,6 +52,7 @@ export const FONTSIZE: FontSize = {
   size_18: 18,
   size_20: 20,
   size_24: 24,
+  size_26: 26,
   size_28: 28,
   size_30: 30,
 };
@@ -62,4 +64,5 @@ export const BORDERRADIUS: BorderRadius = {
   radius_15: 15,
   radius_20: 20,
   radius_25: 25,
+  radius_100: 100,
 };
