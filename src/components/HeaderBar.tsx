@@ -3,7 +3,7 @@ import React from 'react';
 import {SPACING} from '../theme/theme';
 import {logo} from '../assets/images';
 import CustomIcon from './CustomIcon';
-// import Icon from 'react-native-vector-icons/FontAwesome6';
+import Icon from 'react-native-vector-icons/FontAwesome6';
 
 const HeaderBar = () => {
   return (
@@ -12,7 +12,7 @@ const HeaderBar = () => {
         <Image source={logo} style={styles.image} />
       </View>
       <View>
-        {/* <Icon name="crown" size={30} /> */}
+        <Icon name="crown" size={30} />
         <CustomIcon name="crown" size={24} />
         <Text>TExt</Text>
       </View>
