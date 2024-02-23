@@ -4,6 +4,7 @@ import HeaderBar from '../components/HeaderBar';
 import {COLORS, FONTFAMILY, FONTSIZE, SPACING} from '../theme/theme';
 import {ImageBackground} from 'react-native';
 import {homeBg, mainLogo} from '../assets/images';
+import SingleMessage from '../components/SingleMessage';
 
 const HomeScreen: React.FC = () => {
   return (
@@ -22,6 +23,7 @@ const HomeScreen: React.FC = () => {
                 Directly message anyone without saving phone as contact.
               </Text>
             </View>
+            <SingleMessage />
           </ImageBackground>
         </View>
       </View>
