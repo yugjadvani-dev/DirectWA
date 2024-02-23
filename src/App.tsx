@@ -1,6 +1,7 @@
 import React from 'react';
 import {SafeAreaView, ScrollView, StatusBar, View} from 'react-native';
-import MultiSendScreen from './screens/MultiSendScreen';
+// import MultiSendScreen from './screens/MultiSendScreen';
+import HomeScreen from './screens/HomeScreen';
 
 function App(): React.JSX.Element {
   return (
@@ -8,8 +9,8 @@ function App(): React.JSX.Element {
       <StatusBar />
       <ScrollView contentInsetAdjustmentBehavior="automatic">
         <View>
-          {/* <HomeScreen /> */}
-          <MultiSendScreen />
+          <HomeScreen />
+          {/* <MultiSendScreen /> */}
         </View>
       </ScrollView>
     </SafeAreaView>
