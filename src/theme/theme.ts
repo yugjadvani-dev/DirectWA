@@ -19,7 +19,7 @@ export const SPACING: Spacing = {
 export const COLORS: Color = {
   primaryRedHex: '#DC3535',
   primaryOrangeHex: '#D17842',
-  primaryBlackHex: '#0C0F14',
+  primaryBlackHex: '#212529',
   primaryDarkGreyHex: '#141921',
   secondaryDarkGreyHex: '#21262E',
   primaryGreyHex: '#e5e7eb',
