@@ -1,39 +1,61 @@
-import {Image, StyleSheet, TouchableOpacity, View} from 'react-native';
 import React from 'react';
+import * as reactNative from 'react-native';
 import {logo} from '../assets/images';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import {BORDERRADIUS, COLORS, SPACING} from '../theme/theme';
 
 const HeaderBar = () => {
-  return (
-    <View style={styles.container}>
-      <View>
-        <Image source={logo} />
-      </View>
+  const handleOnShare = async () => {
+    try {
+      const result = await reactNative.Share.share({
+        message:
+          'React Native | A framework for building native apps using React',
+      });
+      if (result.action === reactNative.Share.sharedAction) {
+        if (result.activityType) {
+          // shared with activity type of result.activityType
+        } else {
+          // shared
+        }
+      } else if (result.action === reactNative.Share.dismissedAction) {
+        // dismissed
+      }
+    } catch (error: any) {
+      reactNative.Alert.alert(error.message);
+    }
+  };
 
-      <View style={styles.iconWrapper}>
-        <TouchableOpacity style={styles.crownIconView}>
+  return (
+    <reactNative.View style={styles.container}>
+      <reactNative.View>
+        <reactNative.Image source={logo} />
+      </reactNative.View>
+
+      <reactNative.View style={styles.iconWrapper}>
+        <reactNative.TouchableOpacity style={styles.crownIconView}>
           <Icon
             name="crown-outline"
             size={SPACING.space_30}
             color={'#272D36'}
           />
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.crownIconView}>
+        </reactNative.TouchableOpacity>
+        <reactNative.TouchableOpacity
+          onPress={() => handleOnShare()}
+          style={styles.crownIconView}>
           <Icon
             name="share-variant-outline"
             size={SPACING.space_30}
             color={'#272D36'}
           />
-        </TouchableOpacity>
-      </View>
-    </View>
+        </reactNative.TouchableOpacity>
+      </reactNative.View>
+    </reactNative.View>
   );
 };
 
 export default HeaderBar;
 
-const styles = StyleSheet.create({
+const styles = reactNative.StyleSheet.create({
   container: {
     width: '100%',
     flexDirection: 'row',

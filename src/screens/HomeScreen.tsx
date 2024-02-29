@@ -1,5 +1,12 @@
 import React from 'react';
-import {Image, StyleSheet, Text, View} from 'react-native';
+import {
+  Image,
+  SafeAreaView,
+  ScrollView,
+  StyleSheet,
+  Text,
+  View,
+} from 'react-native';
 import HeaderBar from '../components/HeaderBar';
 import {COLORS, FONTFAMILY, FONTSIZE, SPACING} from '../theme/theme';
 import {ImageBackground} from 'react-native';
@@ -9,24 +16,28 @@ import SingleMessage from '../components/SingleMessage';
 const HomeScreen: React.FC = () => {
   return (
     <>
-      <View style={styles.container}>
-        <HeaderBar />
-        <Text style={styles.welcome}>Welcome Back!✌️</Text>
-        <View style={styles.imageWrapper}>
-          <ImageBackground
-            source={homeBg}
-            resizeMode="cover"
-            style={styles.image}>
-            <View style={styles.imageLogo}>
-              <Image source={mainLogo} />
-              <Text style={styles.directly}>
-                Directly message anyone without saving phone as contact.
-              </Text>
+      <ScrollView keyboardShouldPersistTaps="handled">
+        <SafeAreaView style={styles.container}>
+          <View>
+            <HeaderBar />
+            <Text style={styles.welcome}>Welcome Back!✌️</Text>
+            <View style={styles.imageWrapper}>
+              <ImageBackground
+                source={homeBg}
+                resizeMode="cover"
+                style={styles.image}>
+                <View style={styles.imageLogo}>
+                  <Image source={mainLogo} />
+                  <Text style={styles.directly}>
+                    Directly message anyone without saving phone as contact.
+                  </Text>
+                </View>
+                <SingleMessage />
+              </ImageBackground>
             </View>
-            <SingleMessage />
-          </ImageBackground>
-        </View>
-      </View>
+          </View>
+        </SafeAreaView>
+      </ScrollView>
     </>
   );
 };
@@ -36,6 +47,7 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: SPACING.space_20,
     backgroundColor: COLORS.primaryWhiteHex,
+    height: '100%',
   },
   welcome: {
     color: COLORS.secondaryGreyHex,
