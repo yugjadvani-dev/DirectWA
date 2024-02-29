@@ -5,6 +5,7 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import {COLORS, FONTFAMILY, FONTSIZE, SPACING} from '../theme/theme';
 import LinearGradient from 'react-native-linear-gradient';
+import Snackbar from 'react-native-snackbar';
 
 const SingleMessage: React.FC = () => {
   const [number, setNumberInput] = useState<string>('');
@@ -54,6 +55,12 @@ const SingleMessage: React.FC = () => {
 
   const copyToClipboard = () => {
     reactNative.Clipboard.setString(message);
+
+    return Snackbar.show({
+      text: 'Message Copy to clipboard',
+      backgroundColor: '#323232',
+      textColor: '#FFFFFF',
+    });
   };
 
   return (
