@@ -1,5 +1,6 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {
+  Button,
   Image,
   SafeAreaView,
   ScrollView,
@@ -12,13 +13,101 @@ import {COLORS, FONTFAMILY, FONTSIZE, SPACING} from '../theme/theme';
 import {ImageBackground} from 'react-native';
 import {homeBg, mainLogo} from '../assets/images';
 import SingleMessage from '../components/SingleMessage';
+import {
+  AdEventType,
+  BannerAd,
+  BannerAdSize,
+  InterstitialAd,
+  RewardedAd,
+  RewardedAdEventType,
+  TestIds,
+} from 'react-native-google-mobile-ads';
+
+const adUnitId = __DEV__
+  ? TestIds.ADAPTIVE_BANNER
+  : 'ca-app-pub-xxxxxxxxxxxxx/yyyyyyyyyyyyyy';
+
+const adUnitId2 = __DEV__
+  ? TestIds.INTERSTITIAL
+  : 'ca-app-pub-xxxxxxxxxxxxx/yyyyyyyyyyyyyy';
+
+const interstitial = InterstitialAd.createForAdRequest(adUnitId2, {
+  requestNonPersonalizedAdsOnly: true,
+  keywords: ['fashion', 'clothing'],
+});
+
+const adUnitId3 = __DEV__
+  ? TestIds.REWARDED
+  : 'ca-app-pub-xxxxxxxxxxxxx/yyyyyyyyyyyyyy';
+
+const rewarded = RewardedAd.createForAdRequest(adUnitId3, {
+  keywords: ['fashion', 'clothing'],
+});
 
 const HomeScreen: React.FC = () => {
+  const [loaded, setLoaded] = useState(false);
+  const [loaded1, setLoaded1] = useState(false);
+
+  useEffect(() => {
+    const unsubscribe = interstitial.addAdEventListener(
+      AdEventType.LOADED,
+      () => {
+        setLoaded(true);
+      },
+    );
+
+    // Start loading the interstitial straight away
+    interstitial.load();
+
+    // Unsubscribe from events on unmount
+    return unsubscribe;
+  }, []);
+
+  useEffect(() => {
+    const unsubscribeLoaded = rewarded.addAdEventListener(
+      RewardedAdEventType.LOADED,
+      () => {
+        setLoaded1(true);
+      },
+    );
+    const unsubscribeEarned = rewarded.addAdEventListener(
+      RewardedAdEventType.EARNED_REWARD,
+      reward => {
+        console.log('User earned reward of ', reward);
+      },
+    );
+
+    // Start loading the rewarded ad straight away
+    rewarded.load();
+
+    // Unsubscribe from events on unmount
+    return () => {
+      unsubscribeLoaded();
+      unsubscribeEarned();
+    };
+  }, []);
+
+  if (!loaded1) {
+    return null;
+  }
+
+  // No advert ready to show yet
+  if (!loaded) {
+    return null;
+  }
+
   return (
     <>
       <ScrollView keyboardShouldPersistTaps="handled">
         <SafeAreaView style={styles.container}>
           <View>
+            <BannerAd
+              unitId={adUnitId}
+              size={BannerAdSize.ANCHORED_ADAPTIVE_BANNER}
+              requestOptions={{
+                requestNonPersonalizedAdsOnly: true,
+              }}
+            />
             <HeaderBar />
             <Text style={styles.welcome}>Welcome Back!✌️</Text>
             <View style={styles.imageWrapper}>
@@ -35,6 +124,18 @@ const HomeScreen: React.FC = () => {
                 <SingleMessage />
               </ImageBackground>
             </View>
+            <Button
+              title="Show Interstitial"
+              onPress={() => {
+                interstitial.show();
+              }}
+            />
+            <Button
+              title="Show Rewarded Ad"
+              onPress={() => {
+                rewarded.show();
+              }}
+            />
           </View>
         </SafeAreaView>
       </ScrollView>
