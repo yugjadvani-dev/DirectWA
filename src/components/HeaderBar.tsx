@@ -1,8 +1,7 @@
 import React from 'react';
 import * as reactNative from 'react-native';
-import {logo} from '../assets/images';
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import {BORDERRADIUS, COLORS, SPACING} from '../theme/theme';
+import {crown, logo, share} from '../assets/images';
+import {BORDERRADIUS, SPACING} from '../theme/theme';
 
 const HeaderBar = () => {
   const handleOnShare = async () => {
@@ -33,20 +32,12 @@ const HeaderBar = () => {
 
       <reactNative.View style={styles.iconWrapper}>
         <reactNative.TouchableOpacity style={styles.crownIconView}>
-          <Icon
-            name="crown-outline"
-            size={SPACING.space_30}
-            color={'#272D36'}
-          />
+          <reactNative.Image source={crown} />
         </reactNative.TouchableOpacity>
         <reactNative.TouchableOpacity
           onPress={() => handleOnShare()}
           style={styles.crownIconView}>
-          <Icon
-            name="share-variant-outline"
-            size={SPACING.space_30}
-            color={'#272D36'}
-          />
+          <reactNative.Image source={share} />
         </reactNative.TouchableOpacity>
       </reactNative.View>
     </reactNative.View>
@@ -70,7 +61,7 @@ const styles = reactNative.StyleSheet.create({
     gap: SPACING.space_12,
   },
   crownIconView: {
-    backgroundColor: COLORS.primaryGreyHex,
+    backgroundColor: '#F9F9F9',
     borderRadius: BORDERRADIUS.radius_100,
     height: 44,
     width: 44,
