@@ -2,8 +2,13 @@ import React from 'react';
 import * as reactNative from 'react-native';
 import {crown, logo, share} from '../assets/images';
 import {BORDERRADIUS, SPACING} from '../theme/theme';
+import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 
-const HeaderBar: React.FC = () => {
+type NavigationProps = {
+  navigation: NativeStackNavigationProp<RootStackParamList, 'Home', undefined>;
+};
+
+const HeaderBar: React.FC<NavigationProps> = ({navigation}) => {
   const handleOnShare = async () => {
     try {
       const result = await reactNative.Share.share({
@@ -31,7 +36,10 @@ const HeaderBar: React.FC = () => {
       </reactNative.View>
 
       <reactNative.View style={styles.iconWrapper}>
-        <reactNative.TouchableOpacity style={styles.crownIconView}>
+        <reactNative.TouchableOpacity
+          // onPress={() => navigation.push('PremiumFeature')}
+          onPress={() => navigation.navigate('PremiumFeature')}
+          style={styles.crownIconView}>
           <reactNative.Image source={crown} />
         </reactNative.TouchableOpacity>
         <reactNative.TouchableOpacity

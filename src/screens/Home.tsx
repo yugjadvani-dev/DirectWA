@@ -93,7 +93,7 @@ const Home: React.FC<HomeProps> = ({navigation}) => {
         <reactNative.SafeAreaView style={styles.container}>
           <reactNative.View>
             <reactNative.View style={{padding: SPACING.space_20}}>
-              <HeaderBar />
+              <HeaderBar navigation={navigation} />
               <reactNativeGoogleMobileAds.BannerAd
                 unitId={adUnitId}
                 size={
@@ -107,11 +107,6 @@ const Home: React.FC<HomeProps> = ({navigation}) => {
               <reactNative.Text style={styles.welcome}>
                 Welcome Back!✌️
               </reactNative.Text>
-              <reactNative.Button
-                title="Premium"
-                // onPress={() => navigation.navigate('PremiumFeature')}
-                onPress={() => navigation.push('PremiumFeature')}
-              />
             </reactNative.View>
             <reactNative.View>
               <ImageBackground

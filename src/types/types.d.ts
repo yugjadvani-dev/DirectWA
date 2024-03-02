@@ -94,3 +94,8 @@ type Region = (typeof RegionList)[number];
 type Subregion = (typeof SubregionList)[number];
 
 type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>;
+
+type RootStackParamList = {
+  Home: undefined;
+  PremiumFeature: undefined;
+};
