@@ -7,7 +7,6 @@ import {ImageBackground} from 'react-native';
 import {homeBg, mainLogo} from '../assets/images';
 import SingleMessage from '../components/SingleMessage';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
-import {RootStackParamList} from '../App';
 
 type HomeProps = NativeStackScreenProps<RootStackParamList, 'Home'>;
 

@@ -45,7 +45,7 @@ const PremiumFeature = () => {
       <reactNative.View style={styles.card}>
         <reactNative.Text style={styles.basicText}>Basic</reactNative.Text>
         <reactNative.Text>
-          <reactNative.Text style={styles.priceText}>$79.00</reactNative.Text>
+          <reactNative.Text style={styles.priceText}>₹79.00</reactNative.Text>
           <reactNative.Text style={styles.monthText}>/Monthly</reactNative.Text>
         </reactNative.Text>
         <FeatureList />
@@ -70,7 +70,7 @@ const PremiumFeature = () => {
             </reactNative.Text>
             <reactNative.Text>
               <reactNative.Text style={styles.priceText}>
-                $568.00
+                ₹568.00
               </reactNative.Text>
               <reactNative.Text style={styles.monthText}>
                 /Yearly
