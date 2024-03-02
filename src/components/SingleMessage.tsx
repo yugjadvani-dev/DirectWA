@@ -1,9 +1,8 @@
 import React, {useState} from 'react';
 import * as reactNative from 'react-native';
 import CountryPicker from 'react-native-country-picker-modal';
-import Icon from 'react-native-vector-icons/MaterialIcons';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import {COLORS, FONTFAMILY, FONTSIZE, SPACING} from '../theme/theme';
+import {COLORS, FONTFAMILY, SPACING} from '../theme/theme';
 import LinearGradient from 'react-native-linear-gradient';
 import Snackbar from 'react-native-snackbar';
 import {global} from '../assets/styles/globalStyle';
@@ -22,7 +21,7 @@ const SingleMessage: React.FC = () => {
     subregion: 'Western Europe',
   });
 
-  const withCountryNameButton = true;
+  const withCountryNameButton = false;
   const withFlag = true;
   const withEmoji = true;
   const withFilter = true;
@@ -66,8 +65,10 @@ const SingleMessage: React.FC = () => {
 
   return (
     <reactNative.View style={styles.container}>
-      <reactNative.View style={styles.countryCode}>
-        <reactNative.TouchableOpacity style={styles.countryFlag}>
+      <reactNative.View>
+        <reactNative.Text style={styles.label}>Phone Number</reactNative.Text>
+        <reactNative.View style={styles.input}>
+          {/* <Ionicons name="call-outline" size={20} color="black" /> */}
           <CountryPicker
             {...{
               countryCode,
@@ -81,19 +82,6 @@ const SingleMessage: React.FC = () => {
             }}
             visible={showCountry}
           />
-          <reactNative.Text
-            style={
-              styles.countryText
-            }>{`${country?.name} (${country?.currency}) +${country?.callingCode}`}</reactNative.Text>
-        </reactNative.TouchableOpacity>
-        <reactNative.View>
-          <Icon name="keyboard-arrow-down" size={24} color="black" />
-        </reactNative.View>
-      </reactNative.View>
-      <reactNative.View>
-        <reactNative.Text style={styles.label}>Phone Number</reactNative.Text>
-        <reactNative.View style={styles.input}>
-          <Ionicons name="call-outline" size={20} color="black" />
           <reactNative.TextInput
             value={number}
             placeholder="Phone number"
@@ -135,35 +123,6 @@ const styles = reactNative.StyleSheet.create({
   container: {
     marginTop: SPACING.space_24,
     gap: 16,
-  },
-  countryCode: {
-    backgroundColor: COLORS.primaryWhiteHex,
-    paddingHorizontal: SPACING.space_20,
-    paddingVertical: 17,
-    borderRadius: 150,
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 3,
-    },
-    shadowOpacity: 0.05,
-    shadowRadius: 6,
-    elevation: 3,
-    width: '100%',
-    display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-  },
-  countryFlag: {
-    display: 'flex',
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
-  countryText: {
-    color: COLORS.primaryBlackHex,
-    fontSize: FONTSIZE.size_14,
-    fontWeight: '500',
   },
   input: {
     paddingHorizontal: 18,
