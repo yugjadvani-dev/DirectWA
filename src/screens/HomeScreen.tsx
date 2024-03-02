@@ -89,20 +89,23 @@ const HomeScreen: React.FC = () => {
       <reactNative.ScrollView keyboardShouldPersistTaps="handled">
         <reactNative.SafeAreaView style={styles.container}>
           <reactNative.View>
-            <HeaderBar />
-            <reactNativeGoogleMobileAds.BannerAd
-              unitId={adUnitId}
-              size={
-                reactNativeGoogleMobileAds.BannerAdSize.ANCHORED_ADAPTIVE_BANNER
-              }
-              requestOptions={{
-                requestNonPersonalizedAdsOnly: true,
-              }}
-            />
-            <reactNative.Text style={styles.welcome}>
-              Welcome Back!✌️
-            </reactNative.Text>
-            <reactNative.View style={styles.imageWrapper}>
+            <reactNative.View style={{padding: SPACING.space_20}}>
+              <HeaderBar />
+              <reactNativeGoogleMobileAds.BannerAd
+                unitId={adUnitId}
+                size={
+                  reactNativeGoogleMobileAds.BannerAdSize
+                    .ANCHORED_ADAPTIVE_BANNER
+                }
+                requestOptions={{
+                  requestNonPersonalizedAdsOnly: true,
+                }}
+              />
+              <reactNative.Text style={styles.welcome}>
+                Welcome Back!✌️
+              </reactNative.Text>
+            </reactNative.View>
+            <reactNative.View>
               <ImageBackground
                 source={homeBg}
                 resizeMode="cover"
@@ -114,22 +117,25 @@ const HomeScreen: React.FC = () => {
                   </reactNative.Text>
                 </reactNative.View>
                 <SingleMessage />
+                <reactNative.View
+                  style={{
+                    marginVertical: SPACING.space_10,
+                  }}>
+                  <reactNative.Button
+                    title="Show Interstitial"
+                    onPress={() => {
+                      interstitial.show();
+                    }}
+                  />
+                </reactNative.View>
+                <reactNative.Button
+                  title="Show Rewarded Ad"
+                  onPress={() => {
+                    rewarded.show();
+                  }}
+                />
               </ImageBackground>
             </reactNative.View>
-            <reactNative.View style={{marginBottom: SPACING.space_10}}>
-              <reactNative.Button
-                title="Show Interstitial"
-                onPress={() => {
-                  interstitial.show();
-                }}
-              />
-            </reactNative.View>
-            <reactNative.Button
-              title="Show Rewarded Ad"
-              onPress={() => {
-                rewarded.show();
-              }}
-            />
           </reactNative.View>
         </reactNative.SafeAreaView>
       </reactNative.ScrollView>
@@ -140,7 +146,6 @@ const HomeScreen: React.FC = () => {
 const styles = reactNative.StyleSheet.create({
   container: {
     flex: 1,
-    padding: SPACING.space_20,
     backgroundColor: COLORS.primaryWhiteHex,
     height: '100%',
   },
@@ -155,9 +160,8 @@ const styles = reactNative.StyleSheet.create({
   image: {
     flex: 1,
     justifyContent: 'center',
-  },
-  imageWrapper: {
-    paddingVertical: 24,
+    backgroundColor: '#F9F9F9',
+    padding: 24,
   },
   imageLogo: {
     justifyContent: 'center',
