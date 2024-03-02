@@ -6,6 +6,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import {COLORS, FONTFAMILY, FONTSIZE, SPACING} from '../theme/theme';
 import LinearGradient from 'react-native-linear-gradient';
 import Snackbar from 'react-native-snackbar';
+import {global} from '../assets/styles/globalStyle';
 
 const SingleMessage: React.FC = () => {
   const [number, setNumberInput] = useState<string>('');
@@ -121,9 +122,9 @@ const SingleMessage: React.FC = () => {
         start={{x: 0, y: 0}}
         end={{x: 1, y: 1}}
         colors={['#0E7E73', '#075E55']}
-        style={styles.chatBtn}>
+        style={global.chatBtn}>
         <reactNative.TouchableOpacity onPress={() => handleOpenChat()}>
-          <reactNative.Text style={styles.chatText}>Open Chat</reactNative.Text>
+          <reactNative.Text style={global.chatText}>Open Chat</reactNative.Text>
         </reactNative.TouchableOpacity>
       </LinearGradient>
     </reactNative.View>
@@ -153,7 +154,6 @@ const styles = reactNative.StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    // marginBottom: SPACING.space_12,
   },
   countryFlag: {
     display: 'flex',
@@ -202,18 +202,6 @@ const styles = reactNative.StyleSheet.create({
     fontWeight: '500',
     color: '#272B33',
     marginBottom: 8,
-  },
-  chatBtn: {
-    paddingHorizontal: 18,
-    paddingVertical: 15,
-    borderRadius: 60,
-  },
-  chatText: {
-    color: '#FFF',
-    textAlign: 'center',
-    fontWeight: '600',
-    fontSize: 16,
-    fontFamily: FONTFAMILY.inter_bold,
   },
 });
 

@@ -42,16 +42,20 @@
       "sha1": "4bef228336395731e5a7f86027ca2dd75ba38c91"
     },
     {
+      "path": "src/assets/images/crown.png",
+      "sha1": "be7f49d0e2b359335a341d98bd4159a0303c885d"
+    },
+    {
       "path": "src/assets/images/home_bg.png",
       "sha1": "b59d0685bca09500b4e5058bd5a5b560d5408f42"
     },
     {
       "path": "src/assets/images/index.ts",
-      "sha1": "ba33691b6658097d78888962fdc15862678c0b50"
+      "sha1": "8fd3ae7c7a9f6f31ed3aa2d4efd2b0d69e5d47dc"
     },
     {
       "path": "src/assets/images/launch_screen.png",
-      "sha1": "0e24a43932a0e6c61f7b2b25c46c4af815053223"
+      "sha1": "5a258ff881e1daa9c0b4ec7dbc2020718aa68ff1"
     },
     {
       "path": "src/assets/images/logo.png",
@@ -60,6 +64,10 @@
     {
       "path": "src/assets/images/main_logo.png",
       "sha1": "270c787f99f4957399a3c5596ebe3864b209c0ad"
+    },
+    {
+      "path": "src/assets/images/share.png",
+      "sha1": "6c22007cac4317917ba1a98a29f70b20151a7362"
     }
   ]
 }

@@ -3,7 +3,7 @@ import * as reactNative from 'react-native';
 import {crown, logo, share} from '../assets/images';
 import {BORDERRADIUS, SPACING} from '../theme/theme';
 
-const HeaderBar = () => {
+const HeaderBar: React.FC = () => {
   const handleOnShare = async () => {
     try {
       const result = await reactNative.Share.share({

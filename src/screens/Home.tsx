@@ -1,11 +1,15 @@
 import React, {useEffect, useState} from 'react';
 import * as reactNative from 'react-native';
+import * as reactNativeGoogleMobileAds from 'react-native-google-mobile-ads';
 import HeaderBar from '../components/HeaderBar';
 import {COLORS, FONTFAMILY, FONTSIZE, SPACING} from '../theme/theme';
 import {ImageBackground} from 'react-native';
 import {homeBg, mainLogo} from '../assets/images';
 import SingleMessage from '../components/SingleMessage';
-import * as reactNativeGoogleMobileAds from 'react-native-google-mobile-ads';
+import {NativeStackScreenProps} from '@react-navigation/native-stack';
+import {RootStackParamList} from '../App';
+
+type HomeProps = NativeStackScreenProps<RootStackParamList, 'Home'>;
 
 const adUnitId = __DEV__
   ? reactNativeGoogleMobileAds.TestIds.ADAPTIVE_BANNER
@@ -32,7 +36,7 @@ const rewarded = reactNativeGoogleMobileAds.RewardedAd.createForAdRequest(
   },
 );
 
-const HomeScreen: React.FC = () => {
+const Home: React.FC<HomeProps> = ({navigation}) => {
   const [loaded, setLoaded] = useState(false);
   const [loaded1, setLoaded1] = useState(false);
 
@@ -104,6 +108,11 @@ const HomeScreen: React.FC = () => {
               <reactNative.Text style={styles.welcome}>
                 Welcome Back!✌️
               </reactNative.Text>
+              <reactNative.Button
+                title="Premium"
+                // onPress={() => navigation.navigate('PremiumFeature')}
+                onPress={() => navigation.push('PremiumFeature')}
+              />
             </reactNative.View>
             <reactNative.View>
               <ImageBackground
@@ -177,4 +186,4 @@ const styles = reactNative.StyleSheet.create({
   },
 });
 
-export default HomeScreen;
+export default Home;
