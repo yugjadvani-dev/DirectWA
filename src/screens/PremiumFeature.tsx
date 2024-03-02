@@ -8,7 +8,7 @@ const FeatureList = () => {
   return (
     <reactNative.View style={styles.listMain}>
       <reactNative.Text style={styles.listText}>
-        Have an{' '}
+        • Have an{' '}
         <reactNative.Text
           style={{
             color: theme.COLORS.primaryBlackHex,
@@ -18,7 +18,7 @@ const FeatureList = () => {
         experience
       </reactNative.Text>
       <reactNative.Text style={styles.listText}>
-        Increase Multi message limit to{' '}
+        • Increase Multi message limit to{' '}
         <reactNative.Text
           style={{
             color: theme.COLORS.primaryBlackHex,
@@ -27,7 +27,7 @@ const FeatureList = () => {
         </reactNative.Text>
       </reactNative.Text>
       <reactNative.Text style={styles.listText}>
-        Increase CSV limit to{' '}
+        • Increase CSV limit to{' '}
         <reactNative.Text
           style={{
             color: theme.COLORS.primaryBlackHex,
