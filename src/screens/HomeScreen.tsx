@@ -9,7 +9,7 @@ import * as reactNativeGoogleMobileAds from 'react-native-google-mobile-ads';
 
 const adUnitId = __DEV__
   ? reactNativeGoogleMobileAds.TestIds.ADAPTIVE_BANNER
-  : 'ca-app-pub-xxxxxxxxxxxxx/yyyyyyyyyyyyyy';
+  : 'ca-app-pub-4150812329940329/1094538281';
 
 const adUnitId2 = __DEV__
   ? reactNativeGoogleMobileAds.TestIds.INTERSTITIAL
