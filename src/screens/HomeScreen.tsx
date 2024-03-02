@@ -1,48 +1,36 @@
 import React, {useEffect, useState} from 'react';
-import {
-  Button,
-  Image,
-  SafeAreaView,
-  ScrollView,
-  StyleSheet,
-  Text,
-  View,
-} from 'react-native';
+import * as reactNative from 'react-native';
 import HeaderBar from '../components/HeaderBar';
 import {COLORS, FONTFAMILY, FONTSIZE, SPACING} from '../theme/theme';
 import {ImageBackground} from 'react-native';
 import {homeBg, mainLogo} from '../assets/images';
 import SingleMessage from '../components/SingleMessage';
-import {
-  AdEventType,
-  BannerAd,
-  BannerAdSize,
-  InterstitialAd,
-  RewardedAd,
-  RewardedAdEventType,
-  TestIds,
-} from 'react-native-google-mobile-ads';
+import * as reactNativeGoogleMobileAds from 'react-native-google-mobile-ads';
 
 const adUnitId = __DEV__
-  ? TestIds.ADAPTIVE_BANNER
+  ? reactNativeGoogleMobileAds.TestIds.ADAPTIVE_BANNER
   : 'ca-app-pub-xxxxxxxxxxxxx/yyyyyyyyyyyyyy';
 
 const adUnitId2 = __DEV__
-  ? TestIds.INTERSTITIAL
+  ? reactNativeGoogleMobileAds.TestIds.INTERSTITIAL
   : 'ca-app-pub-xxxxxxxxxxxxx/yyyyyyyyyyyyyy';
 
-const interstitial = InterstitialAd.createForAdRequest(adUnitId2, {
-  requestNonPersonalizedAdsOnly: true,
-  keywords: ['fashion', 'clothing'],
-});
+const interstitial =
+  reactNativeGoogleMobileAds.InterstitialAd.createForAdRequest(adUnitId2, {
+    requestNonPersonalizedAdsOnly: true,
+    keywords: ['fashion', 'clothing'],
+  });
 
 const adUnitId3 = __DEV__
-  ? TestIds.REWARDED
+  ? reactNativeGoogleMobileAds.TestIds.REWARDED
   : 'ca-app-pub-xxxxxxxxxxxxx/yyyyyyyyyyyyyy';
 
-const rewarded = RewardedAd.createForAdRequest(adUnitId3, {
-  keywords: ['fashion', 'clothing'],
-});
+const rewarded = reactNativeGoogleMobileAds.RewardedAd.createForAdRequest(
+  adUnitId3,
+  {
+    keywords: ['fashion', 'clothing'],
+  },
+);
 
 const HomeScreen: React.FC = () => {
   const [loaded, setLoaded] = useState(false);
@@ -50,7 +38,7 @@ const HomeScreen: React.FC = () => {
 
   useEffect(() => {
     const unsubscribe = interstitial.addAdEventListener(
-      AdEventType.LOADED,
+      reactNativeGoogleMobileAds.AdEventType.LOADED,
       () => {
         setLoaded(true);
       },
@@ -65,13 +53,13 @@ const HomeScreen: React.FC = () => {
 
   useEffect(() => {
     const unsubscribeLoaded = rewarded.addAdEventListener(
-      RewardedAdEventType.LOADED,
+      reactNativeGoogleMobileAds.RewardedAdEventType.LOADED,
       () => {
         setLoaded1(true);
       },
     );
     const unsubscribeEarned = rewarded.addAdEventListener(
-      RewardedAdEventType.EARNED_REWARD,
+      reactNativeGoogleMobileAds.RewardedAdEventType.EARNED_REWARD,
       reward => {
         console.log('User earned reward of ', reward);
       },
@@ -98,52 +86,58 @@ const HomeScreen: React.FC = () => {
 
   return (
     <>
-      <ScrollView keyboardShouldPersistTaps="handled">
-        <SafeAreaView style={styles.container}>
-          <View>
-            <BannerAd
+      <reactNative.ScrollView keyboardShouldPersistTaps="handled">
+        <reactNative.SafeAreaView style={styles.container}>
+          <reactNative.View>
+            <HeaderBar />
+            <reactNativeGoogleMobileAds.BannerAd
               unitId={adUnitId}
-              size={BannerAdSize.ANCHORED_ADAPTIVE_BANNER}
+              size={
+                reactNativeGoogleMobileAds.BannerAdSize.ANCHORED_ADAPTIVE_BANNER
+              }
               requestOptions={{
                 requestNonPersonalizedAdsOnly: true,
               }}
             />
-            <HeaderBar />
-            <Text style={styles.welcome}>Welcome Back!✌️</Text>
-            <View style={styles.imageWrapper}>
+            <reactNative.Text style={styles.welcome}>
+              Welcome Back!✌️
+            </reactNative.Text>
+            <reactNative.View style={styles.imageWrapper}>
               <ImageBackground
                 source={homeBg}
                 resizeMode="cover"
                 style={styles.image}>
-                <View style={styles.imageLogo}>
-                  <Image source={mainLogo} />
-                  <Text style={styles.directly}>
+                <reactNative.View style={styles.imageLogo}>
+                  <reactNative.Image source={mainLogo} />
+                  <reactNative.Text style={styles.directly}>
                     Directly message anyone without saving phone as contact.
-                  </Text>
-                </View>
+                  </reactNative.Text>
+                </reactNative.View>
                 <SingleMessage />
               </ImageBackground>
-            </View>
-            <Button
-              title="Show Interstitial"
-              onPress={() => {
-                interstitial.show();
-              }}
-            />
-            <Button
+            </reactNative.View>
+            <reactNative.View style={{marginBottom: SPACING.space_10}}>
+              <reactNative.Button
+                title="Show Interstitial"
+                onPress={() => {
+                  interstitial.show();
+                }}
+              />
+            </reactNative.View>
+            <reactNative.Button
               title="Show Rewarded Ad"
               onPress={() => {
                 rewarded.show();
               }}
             />
-          </View>
-        </SafeAreaView>
-      </ScrollView>
+          </reactNative.View>
+        </reactNative.SafeAreaView>
+      </reactNative.ScrollView>
     </>
   );
 };
 
-const styles = StyleSheet.create({
+const styles = reactNative.StyleSheet.create({
   container: {
     flex: 1,
     padding: SPACING.space_20,

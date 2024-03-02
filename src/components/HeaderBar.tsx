@@ -62,6 +62,7 @@ const styles = reactNative.StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
     paddingVertical: SPACING.space_8,
+    marginBottom: SPACING.space_10,
   },
   iconWrapper: {
     display: 'flex',

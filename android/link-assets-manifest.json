@@ -38,12 +38,28 @@
       "sha1": "757805e615c974756646e54ceff8e409d5c47207"
     },
     {
+      "path": "src/assets/images/app_icon.png",
+      "sha1": "4bef228336395731e5a7f86027ca2dd75ba38c91"
+    },
+    {
+      "path": "src/assets/images/home_bg.png",
+      "sha1": "b59d0685bca09500b4e5058bd5a5b560d5408f42"
+    },
+    {
       "path": "src/assets/images/index.ts",
-      "sha1": "6db899773e4f8c23abcc4be9b7b1f4a6c7fb51e3"
+      "sha1": "ba33691b6658097d78888962fdc15862678c0b50"
+    },
+    {
+      "path": "src/assets/images/launch_screen.png",
+      "sha1": "0e24a43932a0e6c61f7b2b25c46c4af815053223"
     },
     {
       "path": "src/assets/images/logo.png",
       "sha1": "7983a3382e76e0147a5ec9606c25f0fdc0ca4d0a"
+    },
+    {
+      "path": "src/assets/images/main_logo.png",
+      "sha1": "270c787f99f4957399a3c5596ebe3864b209c0ad"
     }
   ]
 }
