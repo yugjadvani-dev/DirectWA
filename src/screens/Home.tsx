@@ -1,91 +1,50 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import * as reactNative from 'react-native';
 import * as reactNativeGoogleMobileAds from 'react-native-google-mobile-ads';
 import HeaderBar from '../components/HeaderBar';
 import {COLORS, FONTFAMILY, FONTSIZE, SPACING} from '../theme/theme';
-import {ImageBackground} from 'react-native';
 import {homeBg, mainLogo} from '../assets/images';
 import SingleMessage from '../components/SingleMessage';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 
 type HomeProps = NativeStackScreenProps<RootStackParamList, 'Home'>;
 
-const adUnitId = __DEV__
+const adUnitId: string | undefined = __DEV__
   ? reactNativeGoogleMobileAds.TestIds.ADAPTIVE_BANNER
-  : 'ca-app-pub-4150812329940329/1094538281';
+  : 'ca-app-pub-4150812329940329~6918087907';
 
-const adUnitId2 = __DEV__
-  ? reactNativeGoogleMobileAds.TestIds.INTERSTITIAL
-  : 'ca-app-pub-xxxxxxxxxxxxx/yyyyyyyyyyyyyy';
+// const adUnitId2 = __DEV__
+//   ? reactNativeGoogleMobileAds.TestIds.INTERSTITIAL
+//   : 'ca-app-pub-xxxxxxxxxxxxx/yyyyyyyyyyyyyy';
 
-const interstitial =
-  reactNativeGoogleMobileAds.InterstitialAd.createForAdRequest(adUnitId2, {
-    requestNonPersonalizedAdsOnly: true,
-    keywords: ['fashion', 'clothing'],
-  });
-
-const adUnitId3 = __DEV__
-  ? reactNativeGoogleMobileAds.TestIds.REWARDED
-  : 'ca-app-pub-xxxxxxxxxxxxx/yyyyyyyyyyyyyy';
-
-const rewarded = reactNativeGoogleMobileAds.RewardedAd.createForAdRequest(
-  adUnitId3,
-  {
-    keywords: ['fashion', 'clothing'],
-  },
-);
+// const interstitial =
+//   reactNativeGoogleMobileAds.InterstitialAd.createForAdRequest(adUnitId2, {
+//     requestNonPersonalizedAdsOnly: true,
+//     keywords: ['fashion', 'clothing'],
+//   });
 
 const Home: React.FC<HomeProps> = ({navigation}) => {
-  const [loaded, setLoaded] = useState(false);
-  const [loaded1, setLoaded1] = useState(false);
+  // const [loaded, setLoaded] = useState(false);
 
-  useEffect(() => {
-    const unsubscribe = interstitial.addAdEventListener(
-      reactNativeGoogleMobileAds.AdEventType.LOADED,
-      () => {
-        setLoaded(true);
-      },
-    );
+  // useEffect(() => {
+  //   const unsubscribe = interstitial.addAdEventListener(
+  //     reactNativeGoogleMobileAds.AdEventType.LOADED,
+  //     () => {
+  //       setLoaded(true);
+  //     },
+  //   );
 
-    // Start loading the interstitial straight away
-    interstitial.load();
+  //   // Start loading the interstitial straight away
+  //   interstitial.load();
 
-    // Unsubscribe from events on unmount
-    return unsubscribe;
-  }, []);
+  //   // Unsubscribe from events on unmount
+  //   return unsubscribe;
+  // }, []);
 
-  useEffect(() => {
-    const unsubscribeLoaded = rewarded.addAdEventListener(
-      reactNativeGoogleMobileAds.RewardedAdEventType.LOADED,
-      () => {
-        setLoaded1(true);
-      },
-    );
-    const unsubscribeEarned = rewarded.addAdEventListener(
-      reactNativeGoogleMobileAds.RewardedAdEventType.EARNED_REWARD,
-      reward => {
-        console.log('User earned reward of ', reward);
-      },
-    );
-
-    // Start loading the rewarded ad straight away
-    rewarded.load();
-
-    // Unsubscribe from events on unmount
-    return () => {
-      unsubscribeLoaded();
-      unsubscribeEarned();
-    };
-  }, []);
-
-  if (!loaded1) {
-    return null;
-  }
-
-  // No advert ready to show yet
-  if (!loaded) {
-    return null;
-  }
+  // // No advert ready to show yet
+  // if (!loaded) {
+  //   return null;
+  // }
 
   return (
     <>
@@ -109,7 +68,7 @@ const Home: React.FC<HomeProps> = ({navigation}) => {
               </reactNative.Text>
             </reactNative.View>
             <reactNative.View>
-              <ImageBackground
+              <reactNative.ImageBackground
                 source={homeBg}
                 resizeMode="cover"
                 style={styles.image}>
@@ -120,7 +79,7 @@ const Home: React.FC<HomeProps> = ({navigation}) => {
                   </reactNative.Text>
                 </reactNative.View>
                 <SingleMessage />
-                <reactNative.View
+                {/* <reactNative.View
                   style={{
                     marginVertical: SPACING.space_10,
                   }}>
@@ -130,14 +89,8 @@ const Home: React.FC<HomeProps> = ({navigation}) => {
                       interstitial.show();
                     }}
                   />
-                </reactNative.View>
-                <reactNative.Button
-                  title="Show Rewarded Ad"
-                  onPress={() => {
-                    rewarded.show();
-                  }}
-                />
-              </ImageBackground>
+                </reactNative.View> */}
+              </reactNative.ImageBackground>
             </reactNative.View>
           </reactNative.View>
         </reactNative.SafeAreaView>
@@ -177,6 +130,7 @@ const styles = reactNative.StyleSheet.create({
     textAlign: 'center',
     paddingTop: SPACING.space_14,
     maxWidth: '79%',
+    color: '#495057',
   },
 });
 

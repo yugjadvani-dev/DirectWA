@@ -31,6 +31,7 @@
 		F86BCB074E064D4199649D78 /* index.ts in Resources */ = {isa = PBXBuildFile; fileRef = 5EB550B9C5DA44FAB1886CEF /* index.ts */; };
 		031474F7ADA84AF5ABB118A5 /* launch_screen.png in Resources */ = {isa = PBXBuildFile; fileRef = ED2F06F89A424D2182B33412 /* launch_screen.png */; };
 		A60CBD96EFE349C78836318A /* share.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F8BC742F82441978E4E4046 /* share.png */; };
+		76CF1ED3E92141688F60A974 /* globalStyle.ts in Resources */ = {isa = PBXBuildFile; fileRef = 8F0925FED5304EAB8433DCDE /* globalStyle.ts */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,6 +79,7 @@
 		5EB550B9C5DA44FAB1886CEF /* index.ts */ = {isa = PBXFileReference; name = "index.ts"; path = "../src/assets/images/index.ts"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		ED2F06F89A424D2182B33412 /* launch_screen.png */ = {isa = PBXFileReference; name = "launch_screen.png"; path = "../src/assets/images/launch_screen.png"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		0F8BC742F82441978E4E4046 /* share.png */ = {isa = PBXFileReference; name = "share.png"; path = "../src/assets/images/share.png"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		8F0925FED5304EAB8433DCDE /* globalStyle.ts */ = {isa = PBXFileReference; name = "globalStyle.ts"; path = "../src/assets/styles/globalStyle.ts"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -203,6 +205,7 @@
 				5EB550B9C5DA44FAB1886CEF /* index.ts */,
 				ED2F06F89A424D2182B33412 /* launch_screen.png */,
 				0F8BC742F82441978E4E4046 /* share.png */,
+				8F0925FED5304EAB8433DCDE /* globalStyle.ts */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -320,6 +323,7 @@
 				F86BCB074E064D4199649D78 /* index.ts in Resources */,
 				031474F7ADA84AF5ABB118A5 /* launch_screen.png in Resources */,
 				A60CBD96EFE349C78836318A /* share.png in Resources */,
+				76CF1ED3E92141688F60A974 /* globalStyle.ts in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

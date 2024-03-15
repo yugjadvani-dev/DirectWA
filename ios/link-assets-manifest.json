@@ -68,6 +68,10 @@
     {
       "path": "src/assets/images/share.png",
       "sha1": "6c22007cac4317917ba1a98a29f70b20151a7362"
+    },
+    {
+      "path": "src/assets/styles/globalStyle.ts",
+      "sha1": "495a23eb0a699f47d8ce00d6c197fa242886382a"
     }
   ]
 }

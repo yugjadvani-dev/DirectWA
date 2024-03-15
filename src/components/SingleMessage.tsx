@@ -4,7 +4,6 @@ import CountryPicker from 'react-native-country-picker-modal';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import {COLORS, FONTFAMILY, SPACING} from '../theme/theme';
 import LinearGradient from 'react-native-linear-gradient';
-import Snackbar from 'react-native-snackbar';
 import {global} from '../assets/styles/globalStyle';
 
 const SingleMessage: React.FC = () => {
@@ -25,8 +24,8 @@ const SingleMessage: React.FC = () => {
   const withFlag = true;
   const withEmoji = true;
   const withFilter = true;
-  const withAlphaFilter = false;
-  const withCallingCode = false;
+  const withAlphaFilter = true;
+  const withCallingCode = true;
   const showCountry = false;
 
   const handleNumberInputChange = (num: string) => {
@@ -53,14 +52,9 @@ const SingleMessage: React.FC = () => {
     }
   };
 
-  const copyToClipboard = () => {
-    reactNative.Clipboard.setString(message);
-
-    return Snackbar.show({
-      text: 'Message Copy to clipboard',
-      backgroundColor: '#323232',
-      textColor: '#FFFFFF',
-    });
+  const handlePasteText = async () => {
+    const clipboardContent = await reactNative.Clipboard.getString();
+    onChangeMessage(clipboardContent);
   };
 
   return (
@@ -68,7 +62,6 @@ const SingleMessage: React.FC = () => {
       <reactNative.View>
         <reactNative.Text style={styles.label}>Phone Number</reactNative.Text>
         <reactNative.View style={styles.input}>
-          {/* <Ionicons name="call-outline" size={20} color="black" /> */}
           <CountryPicker
             {...{
               countryCode,
@@ -83,6 +76,7 @@ const SingleMessage: React.FC = () => {
             visible={showCountry}
           />
           <reactNative.TextInput
+            style={styles.textInput}
             value={number}
             placeholder="Phone number"
             onChangeText={handleNumberInputChange}
@@ -94,13 +88,14 @@ const SingleMessage: React.FC = () => {
         <reactNative.Text style={styles.label}>Message</reactNative.Text>
         <reactNative.View style={[styles.input, styles.messageInput]}>
           <reactNative.TextInput
+            style={styles.textInput}
             value={message}
             placeholder="Enter Message"
             onChangeText={onChangeMessage}
             keyboardType="numbers-and-punctuation"
           />
           <reactNative.TouchableOpacity
-            onPress={() => copyToClipboard()}
+            onPress={handlePasteText}
             style={styles.copyIcon}>
             <Ionicons name="copy-outline" size={16} color="#075E55" />
           </reactNative.TouchableOpacity>
@@ -142,6 +137,7 @@ const styles = reactNative.StyleSheet.create({
     alignItems: 'center',
     gap: 8,
     height: 56,
+    // placeholderTextColor: '#ADB5BD',
   },
   messageInput: {
     position: 'relative',
@@ -161,6 +157,10 @@ const styles = reactNative.StyleSheet.create({
     fontWeight: '500',
     color: '#272B33',
     marginBottom: 8,
+  },
+  textInput: {
+    color: '#000',
+    // placeholderTextColor: '#ADB5BD',
   },
 });
 
